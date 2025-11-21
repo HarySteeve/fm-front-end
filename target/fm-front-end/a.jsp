@@ -7,5 +7,11 @@
 </head>
 <body>
     <h1>a.html</h1>
+
+    <form action="${pageContext.request.contextPath}/misy/17" method="post">
+        <input type="text" name="name">
+        <button type="submit">soumettre</button>
+    </form>
+
 </body>
 </html>
