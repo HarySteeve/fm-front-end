@@ -5,6 +5,8 @@ import java.util.List;
 import java.util.Map;
 
 import annotations.AnnotationClass;
+import annotations.Param;
+import annotations.PathVariable;
 import annotations.UrlMapping;
 import util.http.ModelAndView;
 
@@ -32,8 +34,8 @@ public class Personne {
     }
 
     @UrlMapping("/misy/{id}")
-    public String get(Integer id, String name) {
-        return name;
+    public String get(@PathVariable Integer id, @Param("name") String anarana) {
+        return "Name: "+anarana+", age: "+id;
     }
 }
 
