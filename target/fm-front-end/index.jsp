@@ -9,20 +9,8 @@
     <title>Document</title>
 </head>
 <body>
-    <h1>Listes des classes annotes</h1>
-    <ul>
-        <%
-            Set<Class<?>> classes = 
-                (Set<Class<?>>)application.getAttribute("annotatedClasses");
-
-            if(classes == null) {
-                out.println("<li>Aucune classe annotée trouvée.</li>");
-            } else {
-                for(Class<?> c : classes) {
-                    out.println("<li>" + c.getName() + "</li>");
-                }
-            }
-        %>
-    </ul>
+    <h1>Test Get et Post</h1>
+    <p><a href="<%= request.getContextPath() %>/about">Voir la page About (GET)</a></p>
+    <p><a href="<%= request.getContextPath() %>/pages/postForm.jsp">Aller au formulaire (POST)</a></p>
 </body>
 </html>
