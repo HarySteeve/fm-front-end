@@ -40,6 +40,34 @@ public class Personne {
         return "Vous avez envoye le message: " + message;
     }
 
+    @Get("/test-binder")
+    public ModelAndView binderForm() {
+        return new ModelAndView("/pages/testBinder.jsp");
+    }
+
+    @Post("/test-binder")
+    public ModelAndView binderSubmit(ReservationRequest requestData) {
+        ModelAndView mv = new ModelAndView("/pages/testBinderResult.jsp");
+        Map<String, Object> data = new HashMap<>();
+
+        List<Passenger> passengers = requestData.getPassengers();
+        int totalPassengers = passengers == null ? 0 : passengers.size();
+        Integer maitreIndex = requestData.getMaitreIndex();
+
+        Passenger maitrePassager = null;
+        if (passengers != null && maitreIndex != null && maitreIndex >= 0 && maitreIndex < passengers.size()) {
+            maitrePassager = passengers.get(maitreIndex);
+        }
+
+        data.put("reservation", requestData);
+        data.put("passengers", passengers);
+        data.put("totalPassengers", totalPassengers);
+        data.put("maitrePassager", maitrePassager);
+
+        mv.setData(data);
+        return mv;
+    }
+
     @Post("/test-map")
     public String testMap(Map<String, Object[]> params) {
         StringBuilder sb = new StringBuilder("PARAMS RECUS:\n");

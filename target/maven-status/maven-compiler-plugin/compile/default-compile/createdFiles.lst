@@ -1,3 +1,5 @@
+controller\ReservationRequest.class
+controller\Passenger.class
 AppTest\Main.class
 controller\Personne.class
 controller\AutrePersonne.class
