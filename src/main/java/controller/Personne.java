@@ -46,13 +46,17 @@ public class Personne {
     }
 
     @Post("/test-binder")
-    public ModelAndView binderSubmit(ReservationRequest requestData) {
+    public ModelAndView binderSubmit(ReservationRequest requestData, @Param("maitreIndex") Integer selectedMaitreIndex) {
         ModelAndView mv = new ModelAndView("/pages/testBinderResult.jsp");
         Map<String, Object> data = new HashMap<>();
 
         List<Passenger> passengers = requestData.getPassengers();
         int totalPassengers = passengers == null ? 0 : passengers.size();
-        Integer maitreIndex = requestData.getMaitreIndex();
+        Integer maitreIndex = selectedMaitreIndex != null ? selectedMaitreIndex : requestData.getMaitreIndex();
+
+        if (selectedMaitreIndex != null) {
+            requestData.setMaitreIndex(selectedMaitreIndex);
+        }
 
         Passenger maitrePassager = null;
         if (passengers != null && maitreIndex != null && maitreIndex >= 0 && maitreIndex < passengers.size()) {
