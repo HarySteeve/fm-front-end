@@ -9,6 +9,7 @@ import annotations.Get;
 import annotations.Param;
 import annotations.PathVariable;
 import annotations.Post;
+import annotations.Rest;
 import annotations.UrlMapping;
 import util.http.ModelAndView;
 
@@ -102,6 +103,17 @@ public class Personne {
     @UrlMapping("/misy/{id}")
     public String get(@PathVariable Integer id, @Param("name") String anarana) {
         return "Name: "+anarana+", age: "+id;
+    }
+
+    @Rest
+    @Get("/test-rest-get")
+    public Map<String, Object> testRestGet() {
+        Map<String, Object> payload = new HashMap<>();
+        payload.put("message", "GET @Rest fonctionne");
+        payload.put("framework", "fm-back-end");
+        payload.put("ok", true);
+        payload.put("features", List.of("json", "envelope", "http-200"));
+        return payload;
     }
 }
 

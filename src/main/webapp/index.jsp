@@ -22,6 +22,7 @@
 
         <div class="links">
             <a href="<%= request.getContextPath() %>/about">GET + ModelAndView (liste de fruits)</a>
+            <a href="<%= request.getContextPath() %>/test-rest-get">NOUVEAU: GET @Rest (JSON direct navigateur)</a>
             <a href="<%= request.getContextPath() %>/pages/postForm.jsp">POST simple avec @Param</a>
             <a href="<%= request.getContextPath() %>/pages/testMap.jsp">POST Map&lt;String, Object[]&gt;</a>
             <a href="<%= request.getContextPath() %>/pages/testMix.jsp">POST mix PathVariable + @Param + Map</a>
